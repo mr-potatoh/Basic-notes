@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+
+    <style>
+
+        body {
+            padding: 8%;
+            background-color: #7bd0cf;
+            color: #94d2d1;
+            font-family: Arial;
+        }
+
+        ::-webkit-scrollbar{
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track{
+            background-color: #ffffff00;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        ::-webkit-scrollbar-thumb{
+            background-color: #439492;
+            border-radius: 100px;
+            cursor: pointer;
+        }
+        
+
+
+        .content{
+            background-color: #4ea8a7;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px 6px rgba(0,0,0,0.1);
+            width: 65%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-wrap: nowrap;
+            height: auto;
+            place-items: center;    
+        }
+        
+        #newBtn{
+            background-color: #439492;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            color: #b1e7e6;
+            padding-left: 14px;
+            padding-right: 14px;
+        }
+        .header{
+           display: flex;
+           flex-direction: row; 
+           justify-content: space-between;
+           align-items: center;
+           width: 90%;
+        }
+
+        #new{
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+
+        textarea{
+            resize: none;
+            border: 1px solid #295f5e4f;
+            border-radius: 20px;
+            background-color: #429695a1;
+            width: 315px;
+            height: 120px;
+            overflow: hidden;
+            padding: 10px;
+            margin: 15px;
+            outline: none;
+            color: aliceblue;
+        }
+
+        textarea:focus{
+            overflow: visible;
+            border-radius: 10px;
+        }
+
+        #new div button{
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            z-index: 100;
+            font-size: 16px;
+            padding: 4px;
+            background-color: #439492;
+            color: #7bd0cf;
+            border-radius: 50px;
+            border: none;
+            display: none;
+            padding-left: 9px;
+            padding-right: 9px;
+        }
+
+        #new div button:hover{
+            border: 1.2px solid #2d5c5bb3;
+        }
+
+        #new div{
+            position: relative;
+        }
+        
+        
+
+
+    </style>
+
+</head>
+<body>
+    
+    <div class="content">
+        <div class="header">
+        <h1>📝 Notes</h1>
+        <button onclick="newNote()" id="newBtn">+</button>
+        </div>
+        <div id="new">
+        </div>
+    </div>
+
+    <script>
+        var newtext = document.getElementById("new");
+        var newBtn = document.getElementById("newBtn");
+
+        function newNote() {
+
+            var div = document.createElement("div");
+            var textArea = document.createElement("textarea");
+            var delBtn = document.createElement("button");
+            delBtn.innerText="×"
+
+            delBtn.onclick=function() {
+                del(div);
+            }
+
+
+            newtext.appendChild(div)
+            div.appendChild(textArea)
+            div.appendChild(delBtn)
+
+
+            function del(element) {
+                    element.remove();
+            }
+
+            div.onmouseover=function() {
+                    delAppear();
+            }
+
+            function delAppear() {
+                delBtn.style="display:block;"
+                }
+            
+            div.onmouseleave=function() {
+                    delDisappear();
+            }
+
+            function delDisappear() {
+                delBtn.style="display:none;"
+                }
+    }
+
+
+            
+            
+
+    </script>
+
+</body>
+</html>
